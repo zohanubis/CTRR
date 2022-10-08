@@ -18,7 +18,7 @@ void input()
 }
 int main()
 {
-    #ifdef  OLINE-JUDGE
-    freopen("input.txt", "r",stdin);
-    #endif
+    #ifdef ONLINE_JUDGE
+    
+    #endif // ONLINE_JUDGE
 }
