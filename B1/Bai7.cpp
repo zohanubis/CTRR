@@ -40,12 +40,19 @@ void xuatMaTran(Graph g){
 		printf("\n");
 	}
 }
-int timBac(int m[MAXSIZE][MAXSIZE], int n, int flag) 
+int timCanh(int m[][MAXSIZE], int n)
 {
-    int bac = 0;
+    int soCanh = 0;
     for (int i = 0; i < n; i++)
     {
-        bac += m[flag -1][i];
+        for (int j = 0; j < n; j++)
+        {
+            // tinh duong cheo tren
+            if (j >= i)
+            {
+                soCanh += m[i][j];
+            }
+        }
     }
-    return bac + m[flag -1 ][flag -1];
+    return soCanh;
 }
