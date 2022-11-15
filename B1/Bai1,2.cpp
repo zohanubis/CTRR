@@ -8,7 +8,7 @@ struct Graph{
 };
 void docMaTranKe(Graph &g,char *fileName);
 void xuatMaTran(Graph g);
-void main(){
+int main(){
 	Graph g;
 	char fileName[50] = "input_mtk.txt";
 	docMaTranKe(g,fileName);
