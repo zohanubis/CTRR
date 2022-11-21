@@ -8,11 +8,14 @@ struct Graph{
 };
 void docMaTranKe(Graph &g,char *fileName);
 void xuatMaTran(Graph g);
-void main(){
+int timCanh(int m[][MAXSIZE], int n);
+int main(){
 	Graph g;
+	int m[MAXSIZE][MAXSIZE],n;
 	char fileName[50] = "input_mtk.txt";
 	docMaTranKe(g,fileName);
 	xuatMaTran(g);
+	printf("\n\t\tSo canh cua do thi : %d",timCanh(g.m,g.n));
 	getch();
 }
 void docMaTranKe(Graph &g, char *fileName){

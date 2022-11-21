@@ -21,6 +21,7 @@ void docMaTranKe(Graph &g, char *fileName){
 		g.flag = -1;
 		printf("\n\tFile khong ton tai!");
 		return;
+		
 	}
 	fscanf(f,"%d",&g.flag);
 	fscanf(f,"%d",&g.n);
