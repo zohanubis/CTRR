@@ -8,11 +8,17 @@ struct Graph{
 };
 void docMaTranKe(Graph &g,char *fileName);
 void xuatMaTran(Graph g);
-void main(){
+void timBac(int m[MAXSIZE][MAXSIZE], int n, int k);
+int timBac(Graph g, int k);
+int main(){
 	Graph g;
+	int m,n,flag, k;
 	char fileName[50] = "input_mtk.txt";
 	docMaTranKe(g,fileName);
 	xuatMaTran(g);
+	int k = 0;
+	int count = timBac(g,k);
+	printf("\n\tBac cua dinh : ",count);
 	getch();
 }
 void docMaTranKe(Graph &g, char *fileName){
@@ -40,12 +46,41 @@ void xuatMaTran(Graph g){
 		printf("\n");
 	}
 }
-int timBac(int m[MAXSIZE][MAXSIZE], int n, int flag) 
+// void timBac(int m[MAXSIZE][MAXSIZE], int n, int k)
+// {
+// 	if (k >= 1 && k<= n)
+// 	{
+// 		int count = 0;
+// 		for (int i = 0; i < n; i++)
+// 		{
+// 			if (m[i][k-1] == 1)
+// 			{
+// 				count++;
+// 			}
+// 			printf("\n\tBac cua dinh : %d", count);	
+// 		}
+// 	}
+// 	else{
+// 				printf("Dinh nhap ko ton tai ");
+// 			}
+// }
+int timBac(Graph g, int k)
 {
-    int bac = 0;
-    for (int i = 0; i < n; i++)
-    {
-        bac += m[flag -1][i];
-    }
-    return bac + m[flag -1 ][flag -1];
+	int count = 0;
+	for (int i = 0; i < g.n; i++)
+	{
+		if (g.m[k][i] == 1)
+		{
+			count++;
+		}
+		
+	}
+	if (g.m[k][k] == 1)
+	{
+		count ++;
+	}
+	return count++;
+	
 }
+// Ma tran ke ra danh sach ke
+// Ma tran ke ra danh sach canh
