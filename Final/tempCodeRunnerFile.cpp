@@ -23,9 +23,9 @@ void readFile(Graph &g)
     else{
         fscanf(f,"%d",&g.flag);
         fscanf(f,"%d",&g.n);
-        for (int i = 1; i <= g.n; i++)
+        for (int i = 1; i < g.n; i++)
         {
-            for (int j = 1; j <= g.n; j++)
+            for (int j = 1; j < g.n; j++)
             {
                 fscanf(f,"%d",&g.w[i][j]);
             }
@@ -73,7 +73,7 @@ void xayDungCayKhungBFS(Graph g,canh T[], int &soCanh)
                 T[soCanh].v = v;
                 chuaXet[v] = 1;
                 chuaXet[u] = 1;
-                printf("\n===============(%d,%d)",T[soCanh].u, T[soCanh].v);
+                printf("\n(%d,%d)",T[soCanh].u, T[soCanh].v);
                 if (soCanh == g.n -1)
                 {
                     outputCayKhung(T,soCanh);
@@ -87,12 +87,13 @@ int main(){
     Graph g;
     readFile(g);
     canh T[MAX];
-
+    outputGraph(g);
     int soCanh = 0;
     for (int i = 0; i < g.n; i++)
     {
         chuaXet[i] =0;
     }
-    // outputCayKhung(T,soCanh);
+    soCanh =0;
+    printf("\n\tCay Khung BFS : \n");
     xayDungCayKhungBFS(g,T,soCanh);
 }

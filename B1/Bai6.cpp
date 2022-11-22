@@ -1,86 +1,49 @@
 #include "stdio.h"
-#include "conio.h"
 #define MAXSIZE 50
 struct Graph{
 	int flag;
 	int n;
 	int m[MAXSIZE][MAXSIZE];
 };
-void docMaTranKe(Graph &g,char *fileName);
-void xuatMaTran(Graph g);
-void timBac(int m[MAXSIZE][MAXSIZE], int n, int k);
-int timBac(Graph g, int k);
+void nhapMaTran(Graph &g);
+int ghiFile(Graph g, char *fileName);
 int main(){
 	Graph g;
-	int m,n,flag, k;
-	char fileName[50] = "input_mtk.txt";
-	docMaTranKe(g,fileName);
-	xuatMaTran(g);
-	int k = 0;
-	int count = timBac(g,k);
-	printf("\n\tBac cua dinh : ",count);
-	getch();
-}
-void docMaTranKe(Graph &g, char *fileName){
-	FILE *f = fopen(fileName,"rt");
-	if(f == NULL){
-		g.flag = -1;
-		printf("\n\tFile khong ton tai!");
-		return;
+	nhapMaTran(g);
+	char fileName[MAXSIZE] = "output_mtk.txt";
+	int result = ghiFile(g,fileName);
+	if(result == 1){
+		printf("\n\tGhi file thanh cong!");
+	}else{
+		printf("\n\tGhi file khong thanh cong!");
 	}
-	fscanf(f,"%d",&g.flag);
-	fscanf(f,"%d",&g.n);
+	return 0;
+}
+void nhapMaTran(Graph &g){
+	printf("Nhap co cua do thi(0 la vo huong, 1 la co huong): ");
+	scanf("%d",&g.flag);
+	printf("Nhap so luong dinh: ");
+	scanf("%d",&g.n);
 	for(int i = 0; i < g.n; i++){
 		for(int j = 0; j < g.n; j++){
-			fscanf(f,"%d",&g.m[i][j]);
+			printf("a[%d][%d] = ",i,j);
+			scanf("%d",&g.m[i][j]);
 		}
+	}
+}
+int ghiFile(Graph g, char *fileName){
+	FILE *f = fopen(fileName,"wt");
+	if(f == NULL){
+		return 0;
+	}
+	fprintf(f,"%d\n",g.flag);
+	fprintf(f,"%d\n",g.n);
+	for(int i = 0; i < g.n; i++){
+		for(int j = 0; j < g.n; j++){
+			fprintf(f,"%d\t",g.m[i][j]);
+		}
+		fprintf(f,"\n");
 	}
 	fclose(f);
+	return 1;
 }
-void xuatMaTran(Graph g){
-	printf("\nMa tran ke:\n");
-	for(int i = 0; i < g.n; i++){
-		for(int j = 0; j < g.n; j++){
-			printf("%d\t",g.m[i][j]);
-		}
-		printf("\n");
-	}
-}
-// void timBac(int m[MAXSIZE][MAXSIZE], int n, int k)
-// {
-// 	if (k >= 1 && k<= n)
-// 	{
-// 		int count = 0;
-// 		for (int i = 0; i < n; i++)
-// 		{
-// 			if (m[i][k-1] == 1)
-// 			{
-// 				count++;
-// 			}
-// 			printf("\n\tBac cua dinh : %d", count);	
-// 		}
-// 	}
-// 	else{
-// 				printf("Dinh nhap ko ton tai ");
-// 			}
-// }
-int timBac(Graph g, int k)
-{
-	int count = 0;
-	for (int i = 0; i < g.n; i++)
-	{
-		if (g.m[k][i] == 1)
-		{
-			count++;
-		}
-		
-	}
-	if (g.m[k][k] == 1)
-	{
-		count ++;
-	}
-	return count++;
-	
-}
-// Ma tran ke ra danh sach ke
-// Ma tran ke ra danh sach canh

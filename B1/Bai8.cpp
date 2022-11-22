@@ -10,7 +10,7 @@ int ghiFile(Graph g, char *fileName);
 int main(){
 	Graph g;
 	nhapMaTran(g);
-	char fileName[MAXSIZE] = "output_dsc.txt";
+	char fileName[MAXSIZE] = "output_dsk.txt";
 	int result = ghiFile(g,fileName);
 	if(result == 1){
 		printf("\n\tGhi file thanh cong!");
@@ -38,23 +38,18 @@ int ghiFile(Graph g, char *fileName){
 	}
 	fprintf(f,"%d\n",g.flag);
 	fprintf(f,"%d\n",g.n);
-	int danhSachCanh[MAXSIZE][MAXSIZE];
-	int k = 0;
 	for(int i = 0; i < g.n; i++){
+		int flag = 0;
 		for(int j = 0; j < g.n; j++){
 			if(g.m[i][j] == 1 && (i < j)){
-				k++;
+				if(flag == 0){
+					fprintf(f,"%d ",i);
+					flag = 1;
+				}
+				fprintf(f,"%d ",j);
 			}
 		}
-	}
-	fprintf(f,"%d\n",k);
-	for(int i = 0; i < g.n; i++){
-		for(int j = 0; j < g.n; j++){
-			if(g.m[i][j] == 1 && (i < j)){
-				fprintf(f,"%d\t",i);
-				fprintf(f,"%d\n",j);
-			}
-		}
+		fprintf(f,"\n");
 	}
 	fclose(f);
 	return 1;
