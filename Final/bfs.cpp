@@ -55,16 +55,17 @@ void outputGraph(Graph g)
 void outputCayKhung(canh T[], int soCanh)
 {
     printf("\nCay khung nho nhat \n");
-    for (int i = 1; i < soCanh; i++)
+    for (int i = 1; i <= soCanh; i++)
     {
         printf("\t(%d,%d)",T[i].u,T[i].v);
     }
 }
 void xayDungCayKhungBFS(Graph g,canh T[], int &soCanh)
 {
-    for (int u = 0; u < g.n; u++)
-    {
-        for (int v = 0; v < g.n; v++)
+    // Bắt đầu từ đỉnh u = 1
+    for (int u = 1; u <= g.n; u++)
+    { // v là các cạnh kề của đỉnh đang xét
+        for (int v = 1; v <= g.n; v++)
         {
             if (g.w[u][v] != 0 && chuaXet[v] == 0)
             {
@@ -73,8 +74,8 @@ void xayDungCayKhungBFS(Graph g,canh T[], int &soCanh)
                 T[soCanh].v = v;
                 chuaXet[v] = 1;
                 chuaXet[u] = 1;
-                printf("\n===============(%d,%d)",T[soCanh].u, T[soCanh].v);
-                if (soCanh == g.n -1)
+                printf("\n(%d,%d)",T[soCanh].u, T[soCanh].v);
+                if (soCanh == g.n - 1)
                 {
                     outputCayKhung(T,soCanh);
                     return;
@@ -87,12 +88,13 @@ int main(){
     Graph g;
     readFile(g);
     canh T[MAX];
-
+    outputGraph(g);
     int soCanh = 0;
     for (int i = 0; i < g.n; i++)
     {
         chuaXet[i] =0;
     }
-    // outputCayKhung(T,soCanh);
+    soCanh =0;
+    printf("\n\tCay Khung BFS : \n");
     xayDungCayKhungBFS(g,T,soCanh);
 }

@@ -55,16 +55,16 @@ void outputGraph(Graph g)
 void outputCayKhung(canh T[], int soCanh)
 {
     printf("\nCay khung nho nhat \n");
-    for (int i = 1; i < soCanh; i++)
+    for (int i = 1; i <= soCanh; i++)
     {
         printf("\t(%d,%d)",T[i].u,T[i].v);
     }
 }
 void xayDungCayKhungBFS(Graph g,canh T[], int &soCanh)
 {
-    for (int u = 0; u < g.n; u++)
+    for (int u = 1; u <= g.n; u++)
     {
-        for (int v = 0; v < g.n; v++)
+        for (int v = 1; v <= g.n; v++)
         {
             if (g.w[u][v] != 0 && chuaXet[v] == 0)
             {
@@ -94,6 +94,7 @@ int main(){
         chuaXet[i] =0;
     }
     soCanh =0;
+    outputCayKhung(T,soCanh);
     printf("\n\tCay Khung BFS : \n");
     xayDungCayKhungBFS(g,T,soCanh);
 }
