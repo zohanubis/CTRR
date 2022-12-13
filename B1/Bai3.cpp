@@ -9,7 +9,7 @@ struct Graph{
 void docDanhSachCanh(Graph &g,char *fileName);
 void khoiTaoMaTran(Graph &g);
 void xuatMaTran(Graph g);
-void main(){
+int main(){
 	Graph g;
 	char fileName[50] = "input_dsc.txt";
 	docDanhSachCanh(g,fileName);
