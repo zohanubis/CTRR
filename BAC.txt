@@ -1,0 +1,9 @@
+1 bac 3
+2 bac 3
+3 bac 3
+4 bac 3
+5 bac 4
+6 bac 2
+7 bac 2
+8 bac 2
+9 bac 2

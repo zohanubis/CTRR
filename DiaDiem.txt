@@ -1,0 +1,9 @@
+﻿1 Can-Tho
+2 Buon-Me-Thuoc
+3 Nha-Trang
+4 Đa-Nang
+5 Hue
+6 Ha-Noi
+7 Con-Dao
+8 Phu-Quoc
+9 Truong-Sa
